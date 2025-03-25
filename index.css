@@ -1,3 +1,254 @@
-#heading {
-    color: red;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    height: 60px;
+}
+
+.logo {
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.header ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.header li {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.header li:hover {
+    color: #ff3366;
+}
+
+.header li::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.header li:hover::after {
+    width: 100%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .header ul {
+        gap: 1rem;
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .header li {
+        font-size: 0.9rem;
+    }
+}
+
+
+/*card start*/
+.res-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+    margin: 1.5rem;
+    position: relative;
+}
+
+.res-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.food-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0 0 10px 10px;
+    transition: transform 0.3s ease;
+}
+
+.res-card:hover .food-img {
+    transform: scale(1.05);
+}
+
+.res-card h3 {
+    margin: 1rem 0 0.5rem 1rem;
+    color: #2c3e50;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.res-card h4.cuisine {
+    margin: 0 1rem 1rem;
+    color: #7f8c8d;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.res-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+}
+
+.res-card:hover::after {
+    transform: scaleX(1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .res-card {
+        width: 90%;
+        margin: 1rem auto;
+    }
+    
+    .food-img {
+        height: 150px;
+    }
+    
+    .res-card h3 {
+        font-size: 1.2rem;
+    }
+}
+/*// card end*/
+
+.body {
+    padding: 2rem 5%;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+.search {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.search input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    padding: 12px 25px;
+}
+
+.res-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .body {
+        padding: 1rem;
+    }
+    
+    .search input {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+.body {
+    padding: 2rem 5%;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+.search {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.search input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    padding: 12px 25px;
+}
+
+.res-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .body {
+        padding: 1rem;
+    }
+    
+    .search input {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
 }
