@@ -16,7 +16,7 @@ const Body = () => {
         <div className='body'>
             <div className='filter'>
                 <button className="filter-btn" onClick={() => {
-                    const filtered = res.filter(item => item.info.rating.aggregate_rating > 4)
+                    const filtered = res.filter(item => item.info.avgRating > 4.5)
                     setRes(filtered)
                 }}>Top Rated</button>
             </div>            
