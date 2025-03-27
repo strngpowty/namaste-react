@@ -1,6 +1,8 @@
 import { SWIGGY_API } from "../utils/constant"
-import Restaurant from "./Restaurant"
 import { useState, useEffect } from "react"
+import Restaurant from "./Restaurant"
+import RestaurantShimmer from "./RestaurantShimmer"
+
 const Body = () => {
     //state variable - super powerful variable
     const [res, setRes] = useState([]);
@@ -12,6 +14,9 @@ const Body = () => {
         }
         fectchData();
     }, [])
+    if (res.length === 0) {
+       return <RestaurantShimmer />
+    }
     return (
         <div className='body'>
             <div className='filter'>
@@ -23,7 +28,7 @@ const Body = () => {
             <div className='res-container'>
                 {
                     res.map((res) => {
-                        return (<Restaurant key={res.info.resId} res={res}/>)
+                        return (<Restaurant key={res.info.id} res={res}/>)
                     })
                 }
             </div>        

@@ -1,6 +1,5 @@
 import { IMG_URL } from "../utils/constant"
 const Restaurant = ({res}) => {
-    console.log(res.info)
     const {name, avgRating, cuisines, cloudinaryImageId} = res.info
     return (
         <div className="res-card">
