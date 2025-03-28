@@ -6,6 +6,7 @@ import Body from './Body'
 import About from './About'
 import Contact from './Contact'
 import ErrorPage from "./ErrorPage"
+import RestaurantMenu from "./RestaurantMenu"
 /* 
 * Header
 * - logo
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact />
+            },
+            {
+                path: '/restaurant/:resid',
+                element: <RestaurantMenu />
             }
         ]
     }
