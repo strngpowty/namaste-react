@@ -14,4 +14,15 @@ const Restaurant = ({res}) => {
     )
 }
 
+export const RestaurantPromo = (Restaurant) =>{
+    return ({res}) => {
+        return (
+            <>
+                <h3>Promotion</h3>
+                <Restaurant res={res}/>
+            </>
+        )
+    }
+}
+
 export default Restaurant

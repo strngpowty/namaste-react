@@ -17,6 +17,7 @@ const RestaurantMenu = () => {
   const restaurantMenu =
     resmenu?.data?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
       .itemCards;
+  console.log(resmenu)
   if (!restaurantMenu) return <h1 className="loading">LOADING</h1>;
   return (
     <div className="restaurant-menu-container">

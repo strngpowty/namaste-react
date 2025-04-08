@@ -1,6 +1,6 @@
 import { SWIGGY_API } from "../utils/constant";
 import { useState, useEffect } from "react";
-import Restaurant from "./Restaurant";
+import Restaurant, { RestaurantPromo } from "./Restaurant";
 import RestaurantShimmer from "./RestaurantShimmer";
 
 const Body = () => {
@@ -8,15 +8,16 @@ const Body = () => {
   const [res, setRes] = useState([]);
   const [search, setSearch] = useState("");
   const [resList, setresList] = useState([]);
+  const RestaurantPromotion = RestaurantPromo(Restaurant);
   useEffect(() => {
     async function fectchData() {
       let response = await fetch(SWIGGY_API);
       let data = await response.json();
       setRes(
-        data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+        data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants,
       );
       setresList(
-        data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+        data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants,
       );
     }
     fectchData();
@@ -50,9 +51,9 @@ const Body = () => {
             setresList(
               res.filter((item) =>
                 item?.info?.cuisines.some((cuisine) =>
-                  cuisine.toLowerCase().includes(search.toLowerCase())
-                )
-              )
+                  cuisine.toLowerCase().includes(search.toLowerCase()),
+                ),
+              ),
             )
           }
         >
@@ -60,9 +61,12 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {console.log(res)}
         {resList.map((res) => {
-          return <Restaurant key={res?.info?.id} res={res} />;
+          return res.info.promoted ? (
+            <RestaurantPromotion res={res} />
+          ) : (
+            <Restaurant res={res} />
+          );
         })}
       </div>
     </div>
