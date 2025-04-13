@@ -1,14 +1,20 @@
 import { SWIGGY_API } from "../utils/constant";
 import { useState, useEffect } from "react";
 import Restaurant, { RestaurantPromo } from "./Restaurant";
+import { useState, useEffect, useContext } from "react";
+import Restaurant from "./Restaurant";
 import RestaurantShimmer from "./RestaurantShimmer";
+import { UserContext } from "../utils/UserContext";
 
 const Body = () => {
   //state variable - super powerful variable
   const [res, setRes] = useState([]);
   const [search, setSearch] = useState("");
   const [resList, setresList] = useState([]);
+
   const RestaurantPromotion = RestaurantPromo(Restaurant);
+
+  const {setUserName, loggedInUser} = useContext(UserContext)
   useEffect(() => {
     async function fectchData() {
       let response = await fetch(SWIGGY_API);
@@ -59,6 +65,14 @@ const Body = () => {
         >
           Search
         </button>
+      </div>
+      <div>
+        <label>UserName: </label>
+        <input
+        type="text"
+        value = {loggedInUser}
+        onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
       <div className="res-container">
         {resList.map((res) => {

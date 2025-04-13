@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState , useEffect } from 'react'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import Header from './Header'
@@ -7,6 +7,7 @@ import About from './About'
 import Contact from './Contact'
 import ErrorPage from "./ErrorPage"
 import RestaurantMenu from "./RestaurantMenu"
+import { UserContext } from '../utils/UserContext'
 /* 
 * Header
 * - logo
@@ -23,11 +24,22 @@ import RestaurantMenu from "./RestaurantMenu"
 */
 
 const AppLayout = () =>  {
+    const [userName, setUserName] = useState();
+
+    useEffect(() => {
+        const data = {
+            name : "Ash"
+        };
+        setUserName(data.name)
+    }, [])
+
     return (
-        <div className='app'>
-            <Header />
-            <Outlet />
-        </div>
+        <UserContext.Provider value={{loggedInUser : userName, setUserName}}>
+            <div className='app'>
+                <Header />
+                <Outlet />
+            </div>
+        </UserContext.Provider>
     )
 }
 
