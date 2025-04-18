@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { RES_MENU } from "../utils/constant";
 import "./RestaurantMenu.css";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 const RestaurantMenu = () => {
   const [resmenu, setResMenu] = useState(null);
   const { resid } = useParams();
@@ -18,6 +20,10 @@ const RestaurantMenu = () => {
     resmenu?.data?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
       .itemCards;
   console.log(resmenu)
+  const dispatch = useDispatch()
+  const handleAddItem = (item) => {
+    dispatch(addItem(item))
+  }
   if (!restaurantMenu) return <h1 className="loading">LOADING</h1>;
   return (
     <div className="restaurant-menu-container">
@@ -80,7 +86,7 @@ const RestaurantMenu = () => {
                     src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${item?.card?.info?.imageId}`}
                     alt="Ice Cream"
                   />
-                  <button className="add-button">ADD</button>
+                  <button className="add-button" onClick={() => handleAddItem(item)}>ADD</button>
                 </div>
               </div>
           );
